@@ -1,3 +1,4 @@
+import { FaFacebook, FaTiktok, FaInstagram } from "react-icons/fa6"
 import './index.css'
 
 const VERDE = '#1a4731'
@@ -43,6 +44,12 @@ const seguros = [
   },
 ]
 
+const redes = [
+  { icon: <FaFacebook size={32} />, label: "Facebook", handle: "/LiliOlveraBustamante", url: "https://www.facebook.com/share/17f7ZMcWeu/" },
+  { icon: <FaTiktok size={32} />, label: "Tiktok", handle: "/hiliana-olvera-bustamante", url: "https://www.tiktok.com/@hilianaolveraseguros" },
+  { icon: <FaInstagram size={32} />, label: "Instagram", handle: "@liliolverabustamante", url: "https://www.instagram.com/liliolverabustamante" },
+]
+
 function App() {
   const whatsapp = "https://wa.me/525555042563"
 
@@ -63,18 +70,9 @@ function App() {
       <section className="py-16 px-6 text-center" style={{backgroundColor: FONDO}}>
         <h1 className="text-4xl font-bold" style={{color: VERDE}}>Hiliana Sofía Olvera Bustamante</h1>
         <p className="text-gray-500 mt-2 mb-10 text-lg">Asesora Profesional en Seguros</p>
-
-        {/* FOTO CENTRADA SIN SUPERPOSICIÓN */}
         <div className="flex flex-col items-center mb-8">
-          <img
-            src="/images/hilianaOlveraConsult.jpeg"
-            alt="Hiliana Sofía Olvera"
-            className="w-52 h-52 rounded-full object-cover object-top border-4 shadow-xl"
-            style={{borderColor: DORADO}}
-          />
+          <img src="/images/hilianaOlveraConsult.jpeg" alt="Hiliana Sofía Olvera" className="w-52 h-52 rounded-full object-cover object-top border-4 shadow-xl" style={{borderColor: DORADO}} />
         </div>
-
-        {/* SERVICIOS DEBAJO DE LA FOTO */}
         <div className="flex flex-col sm:flex-row justify-center gap-6 mb-10">
           {[
             { label: "Asesoría", sub: "Orientación personalizada" },
@@ -87,7 +85,6 @@ function App() {
             </div>
           ))}
         </div>
-
         <p className="max-w-lg mx-auto text-gray-600 text-sm leading-relaxed mb-8">
           Protección integral diseñada específicamente para ti, empresarios, profesionistas, emprendedores y sus familias. Con más de una década de experiencia, ofrecemos soluciones de seguros personalizados que se adapten a tus necesidades y objetivos financieros.
         </p>
@@ -105,17 +102,13 @@ function App() {
           <div className="flex flex-col gap-8">
             {seguros.map((s) => (
               <div key={s.titulo} className="rounded-2xl overflow-hidden shadow-sm flex flex-col sm:flex-row" style={{backgroundColor: FONDO}}>
-                {s.izq && (
-                  <img src={s.img} alt={s.titulo} className="w-full sm:w-64 h-52 sm:h-auto object-cover flex-shrink-0" />
-                )}
+                {s.izq && <img src={s.img} alt={s.titulo} className="w-full sm:w-64 h-52 sm:h-auto object-cover flex-shrink-0" />}
                 <div className="p-8 flex flex-col justify-center">
                   <h3 className="text-lg font-bold mb-3" style={{color: VERDE}}>{s.titulo}</h3>
                   <p className="text-gray-600 text-sm leading-relaxed">{s.desc}</p>
                   <a href={whatsapp} target="_blank" rel="noreferrer" className="mt-5 self-start text-white text-sm px-5 py-2 rounded-full hover:opacity-90 transition" style={{backgroundColor: VERDE}}>Más información</a>
                 </div>
-                {!s.izq && (
-                  <img src={s.img} alt={s.titulo} className="w-full sm:w-64 h-52 sm:h-auto object-cover flex-shrink-0" />
-                )}
+                {!s.izq && <img src={s.img} alt={s.titulo} className="w-full sm:w-64 h-52 sm:h-auto object-cover flex-shrink-0" />}
               </div>
             ))}
           </div>
@@ -152,25 +145,20 @@ function App() {
 
       {/* REDES + QUOTE */}
       <section className="py-16 px-6" style={{backgroundColor: FONDO}}>
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-xl font-bold mb-2" style={{color: VERDE}}>Síguenos en Redes Sociales</h2>
-          <p className="text-gray-500 text-sm mb-8 max-w-xl">Mantente actualizado con consejos, noticias del sector asegurador y contenido exclusivo. Únete a nuestra comunidad digital y descubre cómo proteger mejor tu patrimonio.</p>
-          <div className="flex flex-col sm:flex-row gap-8 text-sm mb-8">
-            {[
-              { icon: "📘", label: "Facebook", handle: "/LiliOlveraBustamante", url: "https://www.facebook.com/share/17f7ZMcWeu/" },
-              { icon: "🎵", label: "Tiktok", handle: "/hiliana-olvera-bustamante", url: "https://www.tiktok.com/@hilianaolveraseguros" },
-              { icon: "📷", label: "Instagram", handle: "@liliolverabustamante", url: "https://www.instagram.com/liliolverabustamante" },
-            ].map((r) => (
-              <a key={r.label} href={r.url} target="_blank" rel="noreferrer" className="flex flex-col items-start gap-1 hover:opacity-80" style={{color: VERDE}}>
-                <span className="text-2xl">{r.icon}</span>
+          <p className="text-gray-500 text-sm mb-10 max-w-xl mx-auto">Mantente actualizado con consejos, noticias del sector asegurador y contenido exclusivo. Únete a nuestra comunidad digital y descubre cómo proteger mejor tu patrimonio.</p>
+          <div className="flex flex-col sm:flex-row justify-center gap-12 text-sm mb-10">
+            {redes.map((r) => (
+              <a key={r.label} href={r.url} target="_blank" rel="noreferrer" className="flex flex-col items-center gap-2 hover:opacity-80 transition" style={{color: VERDE}}>
+                {r.icon}
                 <span className="font-bold">{r.label}</span>
                 <span className="underline text-xs">{r.handle}</span>
               </a>
             ))}
           </div>
           <a href={whatsapp} target="_blank" rel="noreferrer" className="inline-block font-semibold px-8 py-3 rounded-full text-white hover:opacity-90 transition mb-12" style={{backgroundColor: VERDE}}>Contáctanos hoy mismo</a>
-
-          <blockquote className="border-l-4 pl-6 py-2" style={{borderColor: DORADO}}>
+          <blockquote className="max-w-2xl mx-auto border-l-4 pl-6 py-2 text-left mt-10" style={{borderColor: DORADO}}>
             <p className="italic text-gray-700 text-base leading-relaxed mb-3">"Tu tranquilidad y la de tu familia es nuestra prioridad. Permítenos ser tu aliado en la protección de lo que más amas."</p>
             <p className="font-bold" style={{color: VERDE}}>Hiliana Sofía Olvera Bustamante.</p>
             <p className="text-gray-500 text-sm">Asesora Profesional de Seguros</p>
@@ -183,7 +171,7 @@ function App() {
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl font-bold mb-2" style={{color: VERDE}}>Compañías Líderes que Respaldan tu Seguridad</h2>
           <p className="text-gray-500 mb-10 max-w-2xl text-sm">Colaboramos exclusivamente con las aseguradoras más reconocidas y confiables del mercado mexicano. Esta alianza estratégica nos permite ofrecerte las mejores opciones, coberturas competitivas y un servicio de excelencia respaldado por empresas sólidas con trayectoria comprobada.</p>
-          <div className="flex flex-wrap items-center gap-8 mb-14">
+          <div className="flex flex-wrap items-center justify-center gap-8 mb-14">
             {["gnp.jpg","qualitas.jpg","plan-seguro.jpg","insignia-life.jpg","bxmas.webp","ana-seguros.png"].map((logo) => (
               <img key={logo} src={`/images/${logo}`} alt={logo} className="h-10 object-contain grayscale hover:grayscale-0 transition" />
             ))}
@@ -227,7 +215,7 @@ function App() {
               </div>
             ))}
           </div>
-          <div className="grid grid-cols-3 gap-6 mb-10">
+          <div className="grid grid-cols-3 gap-6 mb-10 text-center">
             {[
               { num: "10+", label: "Años de experiencia", sub: "Protegiendo patrimonios y familias" },
               { num: "500+", label: "Clientes satisfechos", sub: "Empresarios y profesionistas" },
@@ -240,7 +228,9 @@ function App() {
               </div>
             ))}
           </div>
-          <a href={whatsapp} target="_blank" rel="noreferrer" className="inline-block font-semibold px-8 py-3 rounded-full text-white hover:opacity-90 transition" style={{backgroundColor: VERDE}}>Agradecemos tus comentarios</a>
+          <div className="text-center">
+            <a href={whatsapp} target="_blank" rel="noreferrer" className="inline-block font-semibold px-8 py-3 rounded-full text-white hover:opacity-90 transition" style={{backgroundColor: VERDE}}>Agradecemos tus comentarios</a>
+          </div>
         </div>
       </section>
 
