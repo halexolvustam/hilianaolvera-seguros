@@ -259,7 +259,7 @@ function App() {
       <footer className="py-8 text-white text-center" style={{backgroundColor: VERDE}}>
         <img src="/images/logo-hiliana.jpeg" alt="Hiliana Olvera Seguros" className="mx-auto mb-4 w-16 h-16 rounded-full object-cover border-2" style={{borderColor: DORADO}} />
         <p className="font-semibold text-sm">Atilano Olvera Consultores en Seguros</p>
-        <p className="text-green-300 text-xs mt-1">© 2025 Todos los derechos reservados.</p>
+        <p className="text-green-300 text-xs mt-1">© 2026 Todos los derechos reservados.</p>
       </footer>
 
     </div>
