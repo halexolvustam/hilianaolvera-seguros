@@ -1,4 +1,6 @@
+import { useState } from 'react'
 import BotonColibri from './components/BotonColibri'
+import FormularioContacto from './components/FormularioContacto'
 import { FaFacebook, FaTiktok, FaInstagram } from "react-icons/fa6"
 import './index.css'
 const VERDE = '#1a4731'
@@ -52,6 +54,7 @@ const redes = [
 
 function App() {
   const whatsapp = "https://wa.me/525555042563"
+  const [servicioActivo, setServicioActivo] = useState('')
 
   return (
     <div className="min-h-screen font-sans" style={{backgroundColor: FONDO}}>
@@ -76,7 +79,7 @@ function App() {
             <span className="text-sm font-semibold" style={{color: VERDE}}>Hiliana Sofía Olvera</span>
           </div>
           <div className="flex flex-col items-center gap-2">
-            <img src="/images/edgarAtilano.jpeg" alt="Edgar Atilano" className="w-52 h-52 rounded-full object-cover border-4 shadow-xl" style={{objectPosition: "center 5%", objectFit: "cover", transform: "scale(0.85)", borderColor: DORADO}} />
+            <img src="/images/edgarAtilano.jpeg" alt="Edgar Atilano" className="w-52 h-52 rounded-full object-cover border-4 shadow-xl" style={{objectPosition: "center 10%", borderColor: DORADO}} />
             <span className="text-sm font-semibold" style={{color: VERDE}}>Edgar Atilano</span>
           </div>
         </div>
@@ -113,7 +116,7 @@ function App() {
                 <div className="p-8 flex flex-col justify-center">
                   <h3 className="text-lg font-bold mb-3" style={{color: VERDE}}>{s.titulo}</h3>
                   <p className="text-gray-600 text-sm leading-relaxed">{s.desc}</p>
-                  <a href={whatsapp} target="_blank" rel="noreferrer" className="mt-5 self-start text-white text-sm px-5 py-2 rounded-full hover:opacity-90 transition" style={{backgroundColor: VERDE}}>Más información</a>
+                  <button onClick={() => { setServicioActivo(s.titulo); document.getElementById('contacto')?.scrollIntoView({behavior: 'smooth'}) }} className="mt-5 self-start text-white text-sm px-5 py-2 rounded-full hover:opacity-90 transition" style={{backgroundColor: VERDE}}>Más información</button>
                 </div>
                 {!s.izq && <img src={s.img} alt={s.titulo} className="w-full sm:w-64 h-52 sm:h-auto object-cover flex-shrink-0" />}
               </div>
@@ -123,7 +126,7 @@ function App() {
       </section>
 
       {/* CONTACTO */}
-      <section className="py-16 px-6" style={{backgroundColor: FONDO}}>
+      <section id="contacto" className="py-16 px-6" style={{backgroundColor: FONDO}}>
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl font-bold mb-2" style={{color: VERDE}}>Contacto:</h2>
           <p className="text-gray-600 text-sm mb-8 max-w-2xl">Estamos listos para asesorarte y proteger lo que más valoras. Comunícate con nosotros para una consulta personalizada sin compromiso. Nuestro equipo responderá todas tus preguntas y diseñará la solución de seguros perfecta para ti.</p>
@@ -133,10 +136,13 @@ function App() {
             </div>
 <div className="flex flex-col sm:flex-row gap-10 flex-1 items-start">              <div className="text-sm space-y-3">
                 <p>🌐 <span className="font-semibold">Sitio web:</span><br />
-                  <a href="https://www.hilianaolveraseguros.com" className="underline" style={{color: VERDE}}>www.hilianaolveraseguros.com</a>
+                  <a href="https://aoconsultoresenseguros.com" className="underline" style={{color: VERDE}}>aoconsultoresenseguros.com</a>
                 </p>
                 <p>📧 <span className="font-semibold">Email:</span><br />
-                  <a href="mailto:hiliana74@gmail.com" className="underline" style={{color: VERDE}}>hiliana74@gmail.com</a>
+                  <a href="mailto:hiliana.olvera@aoconsultoresenseguros.com" className="underline" style={{color: VERDE}}>hiliana.olvera@aoconsultoresenseguros.com</a>
+                </p>
+                <p>📧 <span className="font-semibold">Alan Atilano:</span><br />
+                  <a href="mailto:alan.atilano@aoconsultoresenseguros.com" className="underline" style={{color: VERDE}}>alan.atilano@aoconsultoresenseguros.com</a>
                 </p>
               </div>
               <div className="text-sm text-gray-600">
@@ -144,6 +150,10 @@ function App() {
                 <p>Lunes a viernes de 9:00 a 18:00 hrs</p>
               </div>
             </div>
+          </div>
+          <div className="mt-10">
+            <h3 className="text-xl font-bold mb-6" style={{color: VERDE}}>Agenda tu cita</h3>
+            <FormularioContacto servicioSeleccionado={servicioActivo} />
           </div>
         </div>
       </section>

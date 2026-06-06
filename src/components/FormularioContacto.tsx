@@ -1,202 +1,124 @@
-import React, { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 const VERDE = '#1a4731'
 const DORADO = '#c9a84c'
+const FONDO = '#f0f7f2'
 
-export default function FormularioContacto() {
-  const [formData, setFormData] = useState({
-    nombre: '',
-    email: '',
-    telefono: '',
-    tipoSeguro: '',
-    edad: '',
-    tieneFamilia: '',
-    presupuesto: '',
-    mensaje: ''
-  })
+const servicios = [
+  "Selecciona un servicio",
+  "Seguro de Vida",
+  "Seguro de Gastos Médicos Mayores",
+  "Seguro de Retiro",
+  "Responsabilidad Civil Profesional",
+  "Seguro para tu Hogar",
+  "Seguro para Mascotas",
+]
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value })
+interface Props {
+  servicioSeleccionado?: string
+  onClose?: () => void
+}
+
+export default function FormularioContacto({ servicioSeleccionado, onClose }: Props) {
+  const [nombre, setNombre] = useState('')
+  const [email, setEmail] = useState('')
+  const [telefono, setTelefono] = useState('')
+  const [servicio, setServicio] = useState(servicioSeleccionado || servicios[0])
+
+  useEffect(() => {
+    if (servicioSeleccionado) setServicio(servicioSeleccionado)
+  }, [servicioSeleccionado])
+  const [enviado, setEnviado] = useState(false)
+  const [error, setError] = useState('')
+
+  const CALENDLY = 'https://calendly.com/hiliana-olvera'
+
+  const handleSubmit = async () => {
+    if (!nombre || !email || !telefono || servicio === servicios[0]) {
+      setError('Por favor completa todos los campos.')
+      return
+    }
+    setError('')
+
+    // Abrir Calendly con datos pre-llenados
+    const url = `${CALENDLY}?name=${encodeURIComponent(nombre)}&email=${encodeURIComponent(email)}&a1=${encodeURIComponent(telefono)}&a2=${encodeURIComponent(servicio)}`
+    window.open(url, '_blank')
+    setEnviado(true)
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    alert('Gracias por tu información. Te contactaremos pronto.')
+  if (enviado) {
+    return (
+      <div className="text-center py-10 px-6">
+        <div className="text-5xl mb-4">✅</div>
+        <h3 className="text-xl font-bold mb-2" style={{color: VERDE}}>¡Gracias {nombre}!</h3>
+        <p className="text-gray-600 text-sm mb-6">Te hemos redirigido a nuestra agenda. Elige el horario que mejor te convenga.</p>
+        <button onClick={() => { setEnviado(false); setNombre(''); setEmail(''); setTelefono(''); setServicio(servicios[0]) }} className="font-semibold px-6 py-2 rounded-full text-white text-sm hover:opacity-90 transition" style={{backgroundColor: VERDE}}>
+          Nuevo contacto
+        </button>
+      </div>
+    )
   }
-
-  const tiposSeguro = [
-    { value: '', label: 'Selecciona un tipo de seguro' },
-    { value: 'vida', label: 'Seguro de Vida' },
-    { value: 'gastos-medicos', label: 'Gastos Médicos Mayores' },
-    { value: 'retiro', label: 'Seguro de Retiro' },
-    { value: 'responsabilidad', label: 'Responsabilidad Civil Profesional' },
-    { value: 'hogar', label: 'Seguro para tu Hogar' },
-    { value: 'mascotas', label: 'Seguro para Mascotas' },
-    { value: 'empresarial', label: 'Seguro Empresarial' },
-    { value: 'auto', label: 'Seguro de Auto' }
-  ]
-
-  const presupuestos = [
-    { value: '', label: 'Rango de presupuesto mensual' },
-    { value: 'menos-1000', label: 'Menos de $1,000 MXN' },
-    { value: '1000-3000', label: '$1,000 - $3,000 MXN' },
-    { value: '3000-5000', label: '$3,000 - $5,000 MXN' },
-    { value: '5000-10000', label: '$5,000 - $10,000 MXN' },
-    { value: 'mas-10000', label: 'Más de $10,000 MXN' }
-  ]
 
   return (
-    <div className="bg-white rounded-2xl shadow-sm p-8 mt-8">
-      <h3 className="text-xl font-bold mb-6 text-center" style={{color: VERDE}}>Cuéntanos sobre ti</h3>
-      <p className="text-gray-600 text-sm mb-6 text-center">Esta información nos ayudará a orientarte hacia la mejor opción de seguro para tus necesidades.</p>
-      
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Nombre completo *</label>
-            <input
-              type="text"
-              name="nombre"
-              value={formData.nombre}
-              onChange={handleChange}
-              required
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:outline-none"
-              
-              placeholder="Tu nombre"
-            />
-          </div>
-          
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Correo electrónico *</label>
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:outline-none"
-              placeholder="tu@email.com"
-            />
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Teléfono *</label>
-            <input
-              type="tel"
-              name="telefono"
-              value={formData.telefono}
-              onChange={handleChange}
-              required
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:outline-none"
-              placeholder="55 1234 5678"
-            />
-          </div>
-          
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Edad</label>
-            <input
-              type="number"
-              name="edad"
-              value={formData.edad}
-              onChange={handleChange}
-              min="18"
-              max="100"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:outline-none"
-              placeholder="Ej: 35"
-            />
-          </div>
-        </div>
-
+    <div className="w-full max-w-lg mx-auto">
+      <div className="flex flex-col gap-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">¿Qué tipo de seguro te interesa? *</label>
+          <label className="block text-sm font-semibold mb-1" style={{color: VERDE}}>Nombre completo *</label>
+          <input
+            type="text"
+            value={nombre}
+            onChange={e => setNombre(e.target.value)}
+            placeholder="Tu nombre"
+            className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm outline-none focus:ring-2"
+            style={{backgroundColor: FONDO}}
+            onFocus={e => e.target.style.ringColor = DORADO}
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-semibold mb-1" style={{color: VERDE}}>Email *</label>
+          <input
+            type="email"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+            placeholder="tu@email.com"
+            className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm outline-none focus:ring-2"
+            style={{backgroundColor: FONDO}}
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-semibold mb-1" style={{color: VERDE}}>Teléfono *</label>
+          <input
+            type="tel"
+            value={telefono}
+            onChange={e => setTelefono(e.target.value)}
+            placeholder="+52 55 0000 0000"
+            className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm outline-none focus:ring-2"
+            style={{backgroundColor: FONDO}}
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-semibold mb-1" style={{color: VERDE}}>Servicio de interés *</label>
           <select
-            name="tipoSeguro"
-            value={formData.tipoSeguro}
-            onChange={handleChange}
-            required
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:outline-none bg-white"
+            value={servicio}
+            onChange={e => setServicio(e.target.value)}
+            className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm outline-none focus:ring-2"
+            style={{backgroundColor: FONDO}}
           >
-            {tiposSeguro.map(tipo => (
-              <option key={tipo.value} value={tipo.value}>{tipo.label}</option>
+            {servicios.map(s => (
+              <option key={s} value={s}>{s}</option>
             ))}
           </select>
         </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">¿Tienes familia a cargo?</label>
-            <select
-              name="tieneFamilia"
-              value={formData.tieneFamilia}
-              onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:outline-none bg-white"
-            >
-              <option value="">Selecciona una opción</option>
-              <option value="si">Sí, cónyuge e hijos</option>
-              <option value="si-conyuge">Sí, solo cónyuge</option>
-              <option value="si-hijos">Sí, solo hijos</option>
-              <option value="no">No tengo familia a cargo</option>
-              <option value="padres">Padres dependientes</option>
-            </select>
-          </div>
-          
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Presupuesto mensual estimado</label>
-            <select
-              name="presupuesto"
-              value={formData.presupuesto}
-              onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:outline-none bg-white"
-            >
-              {presupuestos.map(p => (
-                <option key={p.value} value={p.value}>{p.label}</option>
-              ))}
-            </select>
-          </div>
-        </div>
-
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">¿Hay algo más que quieras contarnos?</label>
-          <textarea
-            name="mensaje"
-            value={formData.mensaje}
-            onChange={handleChange}
-            rows={3}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:outline-none resize-none"
-            placeholder="Describe tu situación, necesidades específicas, o cualquier duda que tengas..."
-          />
-        </div>
-
-        {/* BOTÓN DE CALENDLY - Este es el enlace que vincula al servicio */}
-        <div className="pt-4 border-t border-gray-200">
-          <p className="text-sm text-gray-600 mb-3 text-center">¿Prefieres agendar una cita directamente?</p>
-          <a
-            href="https://calendly.com/hiliana-olvera/asesoria"
-            target="_blank"
-            rel="noreferrer"
-            className="block w-full text-center py-3 px-6 rounded-lg font-bold text-white transition-all hover:scale-[1.02] hover:shadow-lg"
-            style={{backgroundColor: DORADO, color: VERDE}}
-          >
-            📅 Agendar reunión virtual en Calendly
-          </a>
-        </div>
-
-        <div className="pt-2">
-          <button
-            type="submit"
-            className="w-full py-3 px-6 rounded-lg font-bold text-white transition-all hover:scale-[1.02] hover:shadow-lg"
-            style={{backgroundColor: VERDE}}
-          >
-            Enviar información
-          </button>
-        </div>
-
-        <p className="text-xs text-gray-500 text-center">
-          Al enviar, aceptas que te contactemos vía WhatsApp o correo electrónico.
-        </p>
-      </form>
+        {error && <p className="text-red-500 text-xs">{error}</p>}
+        <button
+          onClick={handleSubmit}
+          className="w-full font-semibold py-3 rounded-full text-white hover:opacity-90 transition mt-2"
+          style={{backgroundColor: VERDE}}
+        >
+          Agendar cita →
+        </button>
+        <p className="text-xs text-gray-400 text-center">Serás redirigido a nuestra agenda en Calendly para elegir tu horario.</p>
+      </div>
     </div>
   )
 }
