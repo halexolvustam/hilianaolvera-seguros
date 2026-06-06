@@ -1,5 +1,4 @@
 import BotonColibri from './components/BotonColibri'
-import FormularioContacto from './components/FormularioContacto'
 import { FaFacebook, FaTiktok, FaInstagram } from "react-icons/fa6"
 import './index.css'
 const VERDE = '#1a4731'
@@ -73,11 +72,11 @@ function App() {
         <p className="text-gray-500 mt-2 mb-10 text-lg">Asesora Profesional en Seguros</p>
         <div className="flex flex-row justify-center items-end gap-6 mb-8">
           <div className="flex flex-col items-center gap-2">
-            <img src="/images/hilianaOlveraConsult.jpeg" alt="Hiliana Sofía Olvera" className="w-52 h-52 rounded-full object-cover border-4 shadow-xl" style={{objectPosition: "center 15%", borderColor: DORADO}} style={{borderColor: DORADO}} />
+            <img src="/images/hilianaOlveraConsult.jpeg" alt="Hiliana Sofía Olvera" className="w-52 h-52 rounded-full object-cover border-4 shadow-xl" style={{objectPosition: "center 15%", borderColor: DORADO}} />
             <span className="text-sm font-semibold" style={{color: VERDE}}>Hiliana Sofía Olvera</span>
           </div>
           <div className="flex flex-col items-center gap-2">
-            <img src="/images/edgarAtilano.jpeg" alt="Edgar Atilano" className="w-52 h-52 rounded-full object-cover border-4 shadow-xl" style={{objectPosition: "center 5%", objectFit: "cover", transform: "scale(0.85)", borderColor: DORADO}} style={{borderColor: DORADO}} />
+            <img src="/images/edgarAtilano.jpeg" alt="Edgar Atilano" className="w-52 h-52 rounded-full object-cover border-4 shadow-xl" style={{objectPosition: "center 5%", objectFit: "cover", transform: "scale(0.85)", borderColor: DORADO}} />
             <span className="text-sm font-semibold" style={{color: VERDE}}>Edgar Atilano</span>
           </div>
         </div>

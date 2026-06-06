@@ -1,12 +1,8 @@
-import React from 'react'
-
 const VERDE = '#1a4731'
 const DORADO = '#c9a84c'
-
 interface Props {
   href: string
 }
-
 export default function BotonColibri({ href }: Props) {
   return (
     <a href={href} target="_blank" rel="noreferrer" className="inline-block hover:scale-105 transition-transform duration-300">
