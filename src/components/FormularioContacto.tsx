@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 
 const VERDE = '#1a4731'
-const DORADO = '#c9a84c'
 const FONDO = '#f0f7f2'
 
 const servicios = [
@@ -19,7 +18,7 @@ interface Props {
   onClose?: () => void
 }
 
-export default function FormularioContacto({ servicioSeleccionado, onClose }: Props) {
+export default function FormularioContacto({ servicioSeleccionado }: Props) {
   const [nombre, setNombre] = useState('')
   const [email, setEmail] = useState('')
   const [telefono, setTelefono] = useState('')
@@ -71,7 +70,6 @@ export default function FormularioContacto({ servicioSeleccionado, onClose }: Pr
             placeholder="Tu nombre"
             className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm outline-none focus:ring-2"
             style={{backgroundColor: FONDO}}
-            onFocus={e => e.target.style.ringColor = DORADO}
           />
         </div>
         <div>
