@@ -68,6 +68,7 @@ function App() {
           <a href="https://vt.tiktok.com/ZSPAFwtfN/" target="_blank" rel="noreferrer" className="text-white text-xs font-semibold px-3 py-2 rounded-full" style={{backgroundColor: VERDE}}>Video Retiro</a>
         </div>
       </nav>
+      <div style={{backgroundColor: "#c9a84c", height: "3px"}} />
 
       {/* HERO */}
       <section className="py-16 px-6 text-center" style={{backgroundColor: FONDO}}>
@@ -129,6 +130,7 @@ function App() {
       <section id="contacto" className="py-16 px-6" style={{backgroundColor: FONDO}}>
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl font-bold mb-2" style={{color: VERDE}}>Contacto:</h2>
+          <div style={{width: "60px", height: "3px", backgroundColor: "#c9a84c", marginBottom: "8px"}} />
           <p className="text-gray-600 text-sm mb-8 max-w-2xl">Estamos listos para asesorarte y proteger lo que más valoras. Comunícate con nosotros para una consulta personalizada sin compromiso. Nuestro equipo responderá todas tus preguntas y diseñará la solución de seguros perfecta para ti.</p>
           <div className="bg-white rounded-2xl shadow-sm p-8 flex flex-col sm:flex-row gap-8 items-center">
             <div className="flex flex-col items-center gap-4 flex-shrink-0">
@@ -162,13 +164,14 @@ function App() {
       <section className="py-16 px-6" style={{backgroundColor: FONDO}}>
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-xl font-bold mb-2" style={{color: VERDE}}>Síguenos en Redes Sociales</h2>
+          <div style={{width: "60px", height: "3px", backgroundColor: "#c9a84c", marginBottom: "8px"}} />
           <p className="text-gray-500 text-sm mb-10 max-w-xl mx-auto">Mantente actualizado con consejos, noticias del sector asegurador y contenido exclusivo. Únete a nuestra comunidad digital y descubre cómo proteger mejor tu patrimonio.</p>
           <div className="flex flex-col sm:flex-row justify-center gap-12 text-sm mb-10">
             {redes.map((r) => (
-              <a key={r.label} href={r.url} target="_blank" rel="noreferrer" className="flex flex-col items-center gap-2 hover:opacity-80 transition" style={{color: VERDE}}>
-                {r.icon}
-                <span className="font-bold">{r.label}</span>
-                <span className="underline text-xs">{r.handle}</span>
+              <a key={r.label} href={r.url} target="_blank" rel="noreferrer" className="flex flex-col items-center gap-2 hover:opacity-80 transition">
+                <span style={{color: DORADO}}>{r.icon}</span>
+                <span className="font-bold" style={{color: VERDE}}>{r.label}</span>
+                <span className="underline text-xs" style={{color: VERDE}}>{r.handle}</span>
               </a>
             ))}
           </div>
@@ -185,6 +188,7 @@ function App() {
       <section className="py-16 px-6 bg-white">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl font-bold mb-2" style={{color: VERDE}}>Compañías Líderes que Respaldan tu Seguridad</h2>
+          <div style={{width: "60px", height: "3px", backgroundColor: "#c9a84c", marginBottom: "8px"}} />
           <p className="text-gray-500 mb-10 max-w-2xl text-sm">Colaboramos exclusivamente con las aseguradoras más reconocidas y confiables del mercado mexicano. Esta alianza estratégica nos permite ofrecerte las mejores opciones, coberturas competitivas y un servicio de excelencia respaldado por empresas sólidas con trayectoria comprobada.</p>
           <div className="flex flex-wrap items-center justify-center gap-8 mb-14">
             {["gnp.jpg","qualitas.jpg","plan-seguro.jpg","insignia-life.jpg","bxmas.webp","ana-seguros.png"].map((logo) => (
@@ -198,7 +202,7 @@ function App() {
               { num: "03", title: "Acompañamiento Continuo", desc: "Más de 10 años respaldando a nuestros clientes en la protección de su patrimonio y el bienestar de ellos y sus familias." },
             ].map((item) => (
               <div key={item.num}>
-                <div className="text-sm font-bold text-gray-400 mb-1">{item.num}</div>
+                <div className="text-2xl font-bold mb-1" style={{color: DORADO}}>{item.num}</div>
                 <h3 className="font-bold mb-2" style={{color: VERDE}}>{item.title}</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
               </div>
@@ -215,6 +219,7 @@ function App() {
       <section className="py-16 px-6" style={{backgroundColor: '#fde8e8'}}>
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl font-bold mb-2" style={{color: VERDE}}>Testimonios de Clientes Satisfechos</h2>
+          <div style={{width: "60px", height: "3px", backgroundColor: "#c9a84c", marginBottom: "8px"}} />
           <p className="text-gray-600 mb-10 max-w-2xl text-sm">La confianza de nuestros clientes es nuestro mayor logro. Conoce las experiencias reales de empresarios, profesionistas y familias que han encontrado en Atilano Olvera Consultores el aliado perfecto para proteger su patrimonio y tranquilidad.</p>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-14">
             {[
@@ -237,7 +242,7 @@ function App() {
               { num: "6", label: "Aseguradoras líderes", sub: "Alianzas estratégicas" },
             ].map((s) => (
               <div key={s.label}>
-                <div className="text-4xl font-bold" style={{color: VERDE}}>{s.num}</div>
+                <div className="text-4xl font-bold" style={{color: DORADO}}>{s.num}</div>
                 <div className="font-semibold text-sm mt-1" style={{color: VERDE}}>{s.label}</div>
                 <div className="text-gray-500 text-xs mt-1">{s.sub}</div>
               </div>
@@ -250,6 +255,7 @@ function App() {
       </section>
 
       {/* FOOTER */}
+      <div style={{backgroundColor: DORADO, height: "4px"}} />
       <footer className="py-8 text-white text-center" style={{backgroundColor: VERDE}}>
         <img src="/images/logo-hiliana.jpeg" alt="Hiliana Olvera Seguros" className="mx-auto mb-4 w-16 h-16 rounded-full object-cover border-2" style={{borderColor: DORADO}} />
         <p className="font-semibold text-sm">Atilano Olvera Consultores en Seguros</p>
