@@ -1,6 +1,7 @@
+import BotonColibri from './components/BotonColibri'
+import FormularioContacto from './components/FormularioContacto'
 import { FaFacebook, FaTiktok, FaInstagram } from "react-icons/fa6"
 import './index.css'
-
 const VERDE = '#1a4731'
 const DORADO = '#c9a84c'
 const FONDO = '#f0f7f2'
@@ -9,7 +10,7 @@ const seguros = [
   {
     titulo: "Seguro de Vida",
     desc: "Un seguro de vida es más que una póliza, es la promesa de que, pase lo que pase, tus seres queridos podrán mantener su calidad de vida y alcanzar sus sueños, sin preocupaciones económicas.",
-    img: "https://images.unsplash.com/photo-1511895426328-dc8714191011?w=600&q=80",
+    img: "/images/seguroVida.jpeg",
     izq: true
   },
   {
@@ -21,7 +22,7 @@ const seguros = [
   {
     titulo: "Seguro de Retiro",
     desc: "Soñar con una jubilación tranquila, libre de preocupaciones financieras, es el primer paso. El siguiente es hacerlo realidad. En un mundo donde las pensiones públicas no son suficientes, tomar las riendas de tu futuro financiero es esencial.",
-    img: "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=600&q=80",
+    img: "/images/retiro.jpeg",
     izq: true
   },
   {
@@ -58,7 +59,7 @@ function App() {
 
       {/* NAVBAR */}
       <nav className="flex items-center justify-between px-6 py-3 bg-white shadow-sm sticky top-0 z-50">
-        <img src="/images/logo-hiliana.jpeg" alt="Logo" className="h-10 w-10 rounded-full object-cover" />
+        <img src="/images/logo-hiliana.jpeg" alt="Hiliana Olvera Seguros" className="h-16 w-16 rounded-full object-cover border-2" style={{borderColor: DORADO}} />
         <div className="flex items-center gap-3 text-sm">
           <a href="https://www.canva.com/design/DAG4gXeunLc/QRQ3yWksQ-jjfSMAcyzEMA/view" target="_blank" rel="noreferrer" className="text-gray-600 hover:text-gray-900 hidden sm:block">Tarjeta de Presentación</a>
           <a href="https://vt.tiktok.com/ZSPAYVu9w/" target="_blank" rel="noreferrer" className="text-white text-xs font-semibold px-3 py-2 rounded-full" style={{backgroundColor: VERDE}}>Video Mascotas</a>
@@ -70,8 +71,15 @@ function App() {
       <section className="py-16 px-6 text-center" style={{backgroundColor: FONDO}}>
         <h1 className="text-4xl font-bold" style={{color: VERDE}}>Hiliana Sofía Olvera Bustamante</h1>
         <p className="text-gray-500 mt-2 mb-10 text-lg">Asesora Profesional en Seguros</p>
-        <div className="flex flex-col items-center mb-8">
-          <img src="/images/hilianaOlveraConsult.jpeg" alt="Hiliana Sofía Olvera" className="w-52 h-52 rounded-full object-cover object-top border-4 shadow-xl" style={{borderColor: DORADO}} />
+        <div className="flex flex-row justify-center items-end gap-6 mb-8">
+          <div className="flex flex-col items-center gap-2">
+            <img src="/images/hilianaOlveraConsult.jpeg" alt="Hiliana Sofía Olvera" className="w-52 h-52 rounded-full object-cover border-4 shadow-xl" style={{objectPosition: "center 15%", borderColor: DORADO}} style={{borderColor: DORADO}} />
+            <span className="text-sm font-semibold" style={{color: VERDE}}>Hiliana Sofía Olvera</span>
+          </div>
+          <div className="flex flex-col items-center gap-2">
+            <img src="/images/edgarAtilano.jpeg" alt="Edgar Atilano" className="w-52 h-52 rounded-full object-cover border-4 shadow-xl" style={{objectPosition: "center 5%", objectFit: "cover", transform: "scale(0.85)", borderColor: DORADO}} style={{borderColor: DORADO}} />
+            <span className="text-sm font-semibold" style={{color: VERDE}}>Edgar Atilano</span>
+          </div>
         </div>
         <div className="flex flex-col sm:flex-row justify-center gap-6 mb-10">
           {[
@@ -121,9 +129,10 @@ function App() {
           <h2 className="text-2xl font-bold mb-2" style={{color: VERDE}}>Contacto:</h2>
           <p className="text-gray-600 text-sm mb-8 max-w-2xl">Estamos listos para asesorarte y proteger lo que más valoras. Comunícate con nosotros para una consulta personalizada sin compromiso. Nuestro equipo responderá todas tus preguntas y diseñará la solución de seguros perfecta para ti.</p>
           <div className="bg-white rounded-2xl shadow-sm p-8 flex flex-col sm:flex-row gap-8 items-center">
-            <img src="/images/hilianaOlveraConsult.jpeg" alt="Hiliana" className="w-32 h-32 rounded-xl object-cover object-top flex-shrink-0" />
-            <div className="flex flex-col sm:flex-row gap-10 flex-1 items-start">
-              <div className="text-sm space-y-3">
+            <div className="flex flex-col items-center gap-4 flex-shrink-0">
+              <BotonColibri href={whatsapp} />
+            </div>
+<div className="flex flex-col sm:flex-row gap-10 flex-1 items-start">              <div className="text-sm space-y-3">
                 <p>🌐 <span className="font-semibold">Sitio web:</span><br />
                   <a href="https://www.hilianaolveraseguros.com" className="underline" style={{color: VERDE}}>www.hilianaolveraseguros.com</a>
                 </p>
@@ -134,9 +143,6 @@ function App() {
               <div className="text-sm text-gray-600">
                 <p className="font-semibold mb-1">Horario de atención:</p>
                 <p>Lunes a viernes de 9:00 a 18:00 hrs</p>
-              </div>
-              <div className="sm:ml-auto">
-                <a href={whatsapp} target="_blank" rel="noreferrer" className="inline-block font-semibold px-6 py-3 rounded-full text-white hover:opacity-90 transition whitespace-nowrap" style={{backgroundColor: VERDE}}>Solicita una asesoría</a>
               </div>
             </div>
           </div>
@@ -235,8 +241,10 @@ function App() {
       </section>
 
       {/* FOOTER */}
-      <footer className="py-6 bg-gray-900 text-gray-400 text-center text-xs">
-        © 2025 Atilano Olvera Consultores en Seguros. Todos los derechos reservados.
+      <footer className="py-8 text-white text-center" style={{backgroundColor: VERDE}}>
+        <img src="/images/logo-hiliana.jpeg" alt="Hiliana Olvera Seguros" className="mx-auto mb-4 w-16 h-16 rounded-full object-cover border-2" style={{borderColor: DORADO}} />
+        <p className="font-semibold text-sm">Atilano Olvera Consultores en Seguros</p>
+        <p className="text-green-300 text-xs mt-1">© 2025 Todos los derechos reservados.</p>
       </footer>
 
     </div>
