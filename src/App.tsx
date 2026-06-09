@@ -61,7 +61,7 @@ function App() {
 
       {/* NAVBAR */}
       <nav className="flex items-center justify-between px-6 py-3 bg-white shadow-sm sticky top-0 z-50">
-        <img src="/images/logoAO.jpeg" alt="AO Consultores en Seguros" className="h-16 w-16 object-contain" style={{borderColor: DORADO}} />
+        <img src="/images/logoAO.jpeg" alt="AO Consultores en Seguros" className="h-20 w-32 object-contain" style={{borderColor: DORADO}} />
         <div className="flex items-center gap-3 text-sm">
           <a href="https://www.canva.com/design/DAG4gXeunLc/QRQ3yWksQ-jjfSMAcyzEMA/view" target="_blank" rel="noreferrer" className="text-gray-600 hover:text-gray-900 hidden sm:block">Tarjeta de Presentación</a>
           <a href="https://vt.tiktok.com/ZSPAYVu9w/" target="_blank" rel="noreferrer" className="text-white text-xs font-semibold px-3 py-2 rounded-full" style={{backgroundColor: VERDE}}>Video Mascotas</a>
@@ -73,7 +73,7 @@ function App() {
       {/* HERO */}
       <section className="py-16 px-6 text-center" style={{backgroundColor: FONDO}}>
         <h1 className="text-4xl font-bold" style={{color: VERDE}}>AO Consultores en Seguros</h1>
-        <p className="text-gray-500 mt-2 mb-10 text-lg">Asesora Profesional en Seguros</p>
+        <p className="text-gray-500 mt-2 mb-10 text-lg">Asesoría Profesional en Seguros</p>
         <div className="flex flex-row justify-center items-end gap-6 mb-8">
           <div className="flex flex-col items-center gap-2">
             <img src="/images/hilianaOlveraConsult.jpeg" alt="Hiliana Sofía Olvera" className="w-52 h-52 rounded-full object-cover border-4 shadow-xl" style={{objectPosition: "center 15%", borderColor: DORADO}} />
