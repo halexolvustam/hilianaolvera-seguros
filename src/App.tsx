@@ -80,8 +80,8 @@ function App() {
             <span className="text-sm font-semibold" style={{color: VERDE}}>Hiliana Sofía Olvera</span>
           </div>
           <div className="flex flex-col items-center gap-2">
-            <img src="/images/edgarAO.jpeg" alt="Edgar Atilano" className="w-52 h-52 rounded-full object-cover border-4 shadow-xl" style={{objectPosition: "center 10%", borderColor: DORADO}} />
-            <span className="text-sm font-semibold" style={{color: VERDE}}>Edgar Atilano</span>
+            <img src="/images/edgarAO.jpeg" alt="Alan Atilano Olvera" className="w-52 h-52 rounded-full object-cover border-4 shadow-xl" style={{objectPosition: "center 10%", borderColor: DORADO}} />
+            <span className="text-sm font-semibold" style={{color: VERDE}}>Alan Atilano Olvera</span>
           </div>
         </div>
         <div className="flex flex-col sm:flex-row justify-center gap-6 mb-10">
